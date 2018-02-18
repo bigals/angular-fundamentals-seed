@@ -9,8 +9,7 @@ import { PassengerDashboardComponent } from "./passenger-dashboard/containers/pa
 
 @NgModule({
     declarations: [
-        AppComponent,
-        PassengerDashboardComponent
+        AppComponent
     ],
     imports: [
         //angular modules
