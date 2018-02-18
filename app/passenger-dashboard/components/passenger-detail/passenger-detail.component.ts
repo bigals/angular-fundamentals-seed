@@ -6,47 +6,44 @@ import { Passenger } from "../../models/passenger.interface";
     styleUrls: ["./passenger-detail.component.scss"],
     template: `
     <div>
-        <span class="status" [class.checked-in]="detail.checkedIn"></span>
-        <div *ngIf="editing">
-            <input
-                type="text"
-                [value]="detail.fullname"
-                (input)="onNameChange(name.value)"
-                #name>
-        </div>
-        <div *ngIf="!editing">
-            {{ detail.fullname }}
-        </div>
-
-        <div class="date">
-            Check in date:
-            {{ detail.checkInDate ?
-                (detail.checkInDate | date: 'yMMMMd' | uppercase) :
-                'Not checked in'
-            }}
-        </div>
-        <div class="children">
-            Children: {{ detail.children?.length || 0 }}
-        </div>
-        <button (click)="toggleEdit()">
-            {{ editing ? 'Done' : 'Edit' }}
-        </button>
-        <button (click)="onRemove()">
-            Remove
-        </button>
+      <span class="status" [class.checked-in]="detail.checkedIn"></span>
+      <div *ngIf="editing">
+        <input
+          type="text"
+          [value]="detail.fullname"
+          (input)="onNameChange(name.value)"
+          #name>
+      </div>
+      <div *ngIf="!editing">
+        {{ detail.fullname }}
+      </div>
+      <div class="date">
+        Check in date:
+        {{ detail.checkInDate ? (detail.checkInDate | date: 'yMMMMd' | uppercase) : 'Not checked in' }}
+      </div>
+      <div class="children">
+        Children: {{ detail.children?.length || 0 }}
+      </div>
+      <button (click)="toggleEdit()">
+        {{ editing ? 'Done' : 'Edit' }}
+      </button>
+      <button (click)="onRemove()">
+        Remove
+      </button>
     </div>
     `
 })
 export class PassengerDetailComponent implements OnInit {
     @Input()
-    public detail: Passenger;
+  public detail: Passenger;
 
-    @Output()
-    public remove: EventEmitter<any>;
-    @Output()
-    public edit: EventEmitter<any>;
+  @Output()
+ public  edit: EventEmitter<any>;
 
-    public editing: boolean = false;
+  @Output()
+  public remove: EventEmitter<any>;
+
+  public editing: boolean = false;
     constructor () {
         this.remove = new EventEmitter();
         this.edit = new EventEmitter();
