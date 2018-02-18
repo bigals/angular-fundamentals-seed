@@ -30,6 +30,22 @@ export class PassengerDashboardService {
                 return Observable.throw(error.json());
             });
     };
+    public getPassenger = (id: number): Observable<Passenger> => {
+        let headers = new Headers({
+            'Content-Type': 'application/json',
+        });
+        let options = new RequestOptions({
+            headers: headers
+        });
+        return this.http
+            .get(`${PASSENGER_API}/${id}`, options)
+            .map((response: Response) => {
+                return response.json();
+            })
+            .catch((error: any) => {
+                return Observable.throw(error.json());
+            });
+    };
     public updatePassenger = (passenger: Passenger): Observable<Passenger> => {
         let headers = new Headers({
             'Content-Type': 'application/json',

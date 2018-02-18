@@ -25,10 +25,10 @@ import { PassengerDashboardService } from "../../passenger-dashboard.service";
 })
 export class PassengerDashboardComponent implements OnInit {
     public passengers: Passenger[];
-    constructor(private PassengerDashboardService: PassengerDashboardService) {}
+    constructor(private passengerService: PassengerDashboardService) {}
 
     ngOnInit() {
-        this.PassengerDashboardService.getPassengers().subscribe((data: Passenger[]) => {
+        this.passengerService.getPassengers().subscribe((data: Passenger[]) => {
             this.passengers = data;
         }, (error: any) => {
             console.log(error);
@@ -36,7 +36,7 @@ export class PassengerDashboardComponent implements OnInit {
     }
 
     public handleRemove = (event: Passenger) => {
-        this.PassengerDashboardService.removePassenger(event)
+        this.passengerService.removePassenger(event)
             .subscribe((data: Passenger) => {
                 this.passengers = this.passengers.filter((passenger: Passenger) => {
                     return passenger.id !== event.id;
@@ -46,7 +46,7 @@ export class PassengerDashboardComponent implements OnInit {
             });
     };
     public handleEdit = (event: any) => {
-        this.PassengerDashboardService.updatePassenger(event).subscribe(
+        this.passengerService.updatePassenger(event).subscribe(
             (data: Passenger) => {
                 this.passengers = this.passengers.map((passenger: Passenger) => {
                         if (passenger.id === event.id) {

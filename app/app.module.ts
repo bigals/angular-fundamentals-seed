@@ -5,7 +5,6 @@ import { CommonModule } from "@angular/common";
 import { PassengerDashboardModule } from "./passenger-dashboard/passenger-dashboard.module";
 
 import { AppComponent } from "./app.component";
-import { PassengerDashboardComponent } from "./passenger-dashboard/containers/passenger-dashboard/passenger-dashboard.component";
 
 @NgModule({
     declarations: [
