@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Http, Response } from "@angular/http";
+import { Http, Response, Headers, RequestOptions } from "@angular/http";
 
 import { Passenger } from "./models/passenger.interface";
 import { Observable } from "rxjs/Observable";
@@ -13,22 +13,40 @@ export class PassengerDashboardService {
     constructor (private http: Http) {}
 
     public getPassengers = (): Observable<Passenger[]> => {
+        let headers = new Headers({
+            'Content-Type': 'application/json',
+        });
+        let options = new RequestOptions({
+            headers: headers
+        });
         return this.http
-            .get(PASSENGER_API)
+            .get(PASSENGER_API, options)
             .map((response: Response) => {
                 return response.json();
             });
     };
     public updatePassenger = (passenger: Passenger): Observable<Passenger> => {
+        let headers = new Headers({
+            'Content-Type': 'application/json',
+        });
+        let options = new RequestOptions({
+            headers: headers
+        });
         return this.http
-            .put(`${PASSENGER_API}/${passenger.id}`, passenger)
+            .put(`${PASSENGER_API}/${passenger.id}`, passenger, options)
             .map((response: Response) => {
                 return response.json();
             });
     };
     public removePassenger = (passenger: Passenger): Observable<Passenger> => {
+        let headers = new Headers({
+            'Content-Type': 'application/json',
+        });
+        let options = new RequestOptions({
+            headers: headers
+        });
         return this.http
-            .delete(`${PASSENGER_API}/${passenger.id}`)
+            .delete(`${PASSENGER_API}/${passenger.id}`, options)
             .map((response: Response) => {
                 return response.json();
             });
