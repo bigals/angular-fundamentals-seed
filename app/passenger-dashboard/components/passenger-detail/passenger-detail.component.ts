@@ -1,4 +1,4 @@
-import { Component,  OnInit, Input, Output, EventEmitter } from "@angular/core";
+import { Component,  OnInit, OnChanges, Input, Output, EventEmitter } from "@angular/core";
 import { Passenger } from "../../models/passenger.interface";
 
 @Component({
@@ -33,7 +33,7 @@ import { Passenger } from "../../models/passenger.interface";
     </div>
     `
 })
-export class PassengerDetailComponent implements OnInit {
+export class PassengerDetailComponent implements OnInit, OnChanges {
     @Input()
   public detail: Passenger;
 
@@ -49,7 +49,15 @@ export class PassengerDetailComponent implements OnInit {
         this.edit = new EventEmitter();
     }
 
-    public ngOnInit = () => { }
+    public ngOnInit = () => {
+        console.log('ngOnInit');
+    }
+    public ngOnChanges = (changes) => {
+        if (changes.detail) {
+            this.detail = Object.assign({}, changes.detail.currentValue);
+        }
+        console.log('ngOnhanges');
+    }
 
     //Keeps local state of the variable stable as the ngIf
     //will be destroying data as edit is toggled
