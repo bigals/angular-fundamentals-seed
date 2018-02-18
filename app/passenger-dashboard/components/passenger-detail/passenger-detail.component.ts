@@ -49,10 +49,10 @@ export class PassengerDetailComponent implements OnInit, OnChanges {
         this.edit = new EventEmitter();
     }
 
-    public ngOnInit = () => {
+    ngOnInit() {
         console.log('ngOnInit');
     }
-    public ngOnChanges = (changes) => {
+    ngOnChanges(changes) {
         if (changes.detail) {
             this.detail = Object.assign({}, changes.detail.currentValue);
         }
