@@ -50,13 +50,11 @@ export class PassengerDetailComponent implements OnInit, OnChanges {
     }
 
     ngOnInit() {
-        console.log('ngOnInit');
     }
     ngOnChanges(changes) {
         if (changes.detail) {
             this.detail = Object.assign({}, changes.detail.currentValue);
         }
-        console.log('ngOnhanges');
     }
 
     //Keeps local state of the variable stable as the ngIf
