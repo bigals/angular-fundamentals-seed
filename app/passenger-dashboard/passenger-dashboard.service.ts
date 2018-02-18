@@ -4,6 +4,8 @@ import { Http, Response, Headers, RequestOptions } from "@angular/http";
 import { Passenger } from "./models/passenger.interface";
 import { Observable } from "rxjs/Observable";
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
 
 const PASSENGER_API: string = '/api/passengers';
 
@@ -23,6 +25,9 @@ export class PassengerDashboardService {
             .get(PASSENGER_API, options)
             .map((response: Response) => {
                 return response.json();
+            })
+            .catch((error: any) => {
+                return Observable.throw(error.json());
             });
     };
     public updatePassenger = (passenger: Passenger): Observable<Passenger> => {
@@ -36,6 +41,9 @@ export class PassengerDashboardService {
             .put(`${PASSENGER_API}/${passenger.id}`, passenger, options)
             .map((response: Response) => {
                 return response.json();
+            })
+            .catch((error: any) => {
+                return Observable.throw(error.json());
             });
     };
     public removePassenger = (passenger: Passenger): Observable<Passenger> => {
@@ -49,6 +57,9 @@ export class PassengerDashboardService {
             .delete(`${PASSENGER_API}/${passenger.id}`, options)
             .map((response: Response) => {
                 return response.json();
+            })
+            .catch((error: any) => {
+                return Observable.throw(error.json());
             });
     };
 }
