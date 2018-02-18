@@ -1,39 +1,39 @@
 {
   "passengers": [
     {
+      "fullname": "Bill Lumberg",
       "id": 1,
-      "fullname": "Todd Motto",
       "checkedIn": true,
-      "checkInDate": 1290742000000,
-      "baggage": "none"
+      "baggage": "hold-only",
+      "checkInDate": 1290742000000
     },
     {
       "id": 2,
       "fullname": "Rose",
       "checkedIn": false,
       "checkInDate": null,
-      "baggage": "none"
+      "baggage": ""
     },
     {
       "id": 3,
       "fullname": "James",
       "checkedIn": true,
       "checkInDate": 1491606000000,
-      "baggage": "none"
+      "baggage": ""
     },
     {
       "id": 4,
       "fullname": "Louise",
       "checkedIn": true,
       "checkInDate": 1488412800000,
-      "baggage": "none"
+      "baggage": ""
     },
     {
       "id": 5,
       "fullname": "Tina",
       "checkedIn": false,
       "checkInDate": null,
-      "baggage": "none"
+      "baggage": ""
     }
   ]
 }
