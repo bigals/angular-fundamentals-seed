@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
     selector: 'not-found',
     template: `
         <div>
-            Not Found
+            Not Found, <a routerLink="/">go home</a>?
         </div>
     `
 })
