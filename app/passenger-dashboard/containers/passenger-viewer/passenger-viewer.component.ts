@@ -14,6 +14,7 @@ import { Passenger } from '../../models/passenger.interface';
     styleUrls: ["./passenger-viewer.component.scss"],
     template: `
         <div>
+            <button (click)="goBack()">&lsaquo; Go Back</button>
             <passenger-form
                 [detail]="passenger"
                 (update)="onUpdatePassenger($event)">
@@ -47,5 +48,9 @@ export class PassengerViewerComponent implements OnInit {
             }, (error: any) => {
                 console.log(error);
             });
+    }
+
+    goBack() {
+        this.router.navigate(['/passengers']);
     }
 }

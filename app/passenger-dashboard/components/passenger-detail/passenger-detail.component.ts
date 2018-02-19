@@ -27,6 +27,9 @@ import { Passenger } from "../../models/passenger.interface";
       <button (click)="onRemove()">
         Remove
       </button>
+      <button (click)="goToPassenger()">
+        View
+      </button>
     </div>
     `
 })
@@ -35,15 +38,19 @@ export class PassengerDetailComponent implements OnInit, OnChanges {
   public detail: Passenger;
 
   @Output()
- public  edit: EventEmitter<any>;
+ public  edit: EventEmitter<Passenger>;
 
   @Output()
-  public remove: EventEmitter<any>;
+  public remove: EventEmitter<Passenger>;
+  @Output()
+  public view: EventEmitter<Passenger>;
+
 
   public editing: boolean = false;
     constructor () {
-        this.remove = new EventEmitter();
-        this.edit = new EventEmitter();
+        this.remove = new EventEmitter<Passenger>();
+        this.edit = new EventEmitter<Passenger>();
+        this.view = new EventEmitter<Passenger>();
     }
 
     ngOnInit() {
@@ -52,6 +59,10 @@ export class PassengerDetailComponent implements OnInit, OnChanges {
         if (changes.detail) {
             this.detail = Object.assign({}, changes.detail.currentValue);
         }
+    }
+
+    goToPassenger() {
+        this.view.emit(this.detail);
     }
 
     //Keeps local state of the variable stable as the ngIf
