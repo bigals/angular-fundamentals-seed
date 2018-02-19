@@ -12,7 +12,7 @@ import { NotFoundComponent } from "./not-found.component";
 const routes: Routes = [
     {
         path: '',
-        component: HomeComponent,
+        redirectTo: 'passengers',
         pathMatch: 'full'
     },
     {
